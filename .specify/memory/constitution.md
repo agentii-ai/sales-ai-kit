@@ -1,50 +1,158 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
-
-## Core Principles
-
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
-
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
-
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
-
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
-
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
-
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
-
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+<!--
+ Sync Impact Report
+ - Version change: 1.0.0 -> 1.1.0
+ - Modified principles: Sales & Marketing Rigor (expanded)
+ - Added sections: None
+ - Removed sections: Template placeholders
+ - Templates requiring updates:
+   - updated: .specify/templates/plan-template.md
+   - updated: .specify/templates/tasks-template.md
+   - updated: .specify/templates/checklist-template.md
+ - Follow-up TODOs:
+   - TODO(RATIFICATION_DATE): set if different from first amendment date
+ -->
+ # Sales-AI-Kit Constitution
+ 
+ ## Core Principles
+ 
+ ### I. Spec-Kit Compatibility First
+ Sales-AI-Kit MUST preserve the upstream Spec-Kit workflow shape and mental model:
+ constitution -> specify -> plan -> tasks -> implement.
+ 
+ Sales-AI-Kit MUST remain compatible with multiple AI agents (Claude Code, Cursor, Windsurf,
+ etc.) and MUST avoid assumptions tied to a single agent.
+ 
+ ### II. Namespace Isolation (Non-Negotiable)
+ Users MUST be able to install and use multiple *-kit variants on the same machine without
+ collisions.
+ 
+ This requires isolation at three layers:
+ 
+ - **CLI executable name**: Each kit MUST ship a distinct executable.
+   - Spec-Kit: `specify`
+   - Sales-AI-Kit: `sales`
+   - Blog kit: `blog`
+   - PMF kit: `pmf`
+ - **Python package distribution name**: Each kit MUST use a unique distribution name
+   (e.g., `sales-cli`) to avoid `pip/uv` conflicts.
+ - **Project hidden folder (kit package folder)**: Each kit MUST write its templates/memory
+   under its own hidden folder (e.g., `.saleskit/`, `.blogkit/`, `.pmfkit/`).
+ 
+ The word `specify` is allowed as a workflow verb ("specify a feature") and as the upstream
+ executable name; it MUST NOT be used as this kit's installable package or hidden folder
+ namespace.
+ 
+ ### III. Slash Command Namespacing
+ All agent workflows in this kit MUST be invoked via the `saleskit.*` namespace:
+ 
+ - `/saleskit.constitution`
+ - `/saleskit.specify`
+ - `/saleskit.clarify`
+ - `/saleskit.plan`
+ - `/saleskit.tasks`
+ - `/saleskit.implement`
+ 
+ Slash command namespaces MUST NOT overlap with other kits (e.g., `speckit.*`, `blogkit.*`).
+ If a new workflow is added, it MUST follow the `saleskit.<verb>` convention.
+ 
+ ### IV. Artifacts are the Product
+ Sales-AI-Kit is a spec-driven system for producing durable, reviewable artifacts.
+ 
+ The kit MUST treat these as first-class outputs.
+ 
+ In a project initialized by Sales-AI-Kit, the kit-owned source of truth lives under
+ `.saleskit/`.
+ 
+ In this repository, the working copy is currently stored under `.specify/` to preserve
+ compatibility with the upstream Spec-Kit layout and existing agent tooling.
+ 
+ - `.saleskit/memory/constitution.md` as the governing source of truth (in a generated project)
+ - `specs/<feature>/spec.md` as the authoritative "what/why"
+ - `specs/<feature>/plan.md` as the authoritative "how"
+ - `specs/<feature>/tasks.md` as the authoritative execution graph
+ - `refs/` as the worked example and reference library for creating new kits
+ 
+ ### V. Sales & Marketing Rigor (Evidence, ICP, Outcomes)
+ Sales-AI-Kit outputs MUST optimize for real-world GTM execution.
+ 
+ - **ICP-first**: Every spec MUST define a sharp ICP (role, context, constraints, buyer type).
+ - **Outcome-first**: Every plan MUST tie work to measurable outcomes (pipeline, conversion,
+   activation, retention, revenue).
+ - **Evidence-first**: Recommendations SHOULD be grounded in concrete examples, observed
+   patterns, or referenced sources; unsupported "best practices" MUST be labeled as
+   assumptions.
+ - **Hybrid GTM by default**: Work MUST assume PLG and SLG are complementary and MAY include
+   an agentic layer (ALG) when justified. Plans MUST explicitly state which motion(s) apply
+   and why:
+   - PLG: self-serve onboarding, activation, in-product guidance
+   - SLG: complex deals, multi-stakeholder buying, POCs
+   - ALG: orchestration and continuous optimization (with governance)
+ - **Signal-driven qualification**: When discussing pipeline creation, specs/plans SHOULD
+   prefer PQL and intent/signal-based qualification over generic MQL language.
+ - **Tier clarity**: Specs SHOULD distinguish target tier(s) explicitly:
+   - Individual/prosumer
+   - Small team / SMB
+   - Enterprise
+ 
+ ### VI. Agent Governance for GTM Automation
+ Sales-AI-Kit MUST treat agent-driven GTM as a safety and trust problem, not only an
+ automation problem.
+ 
+ - **Human-in-the-loop by default**: Any autonomous outbound action (email, DM, dialing,
+   pricing changes, CRM mutation) MUST require an explicit approval gate unless the plan
+   justifies full autonomy and defines rollback.
+ - **Auditability**: Automated recommendations and actions MUST be traceable to inputs
+   (signals, customer data, docs) and MUST produce an audit log suitable for review.
+ - **Truthfulness constraints**: Generated outreach MUST avoid fabricated claims, metrics,
+   customers, or case studies.
+ - **Cost and ROI discipline**: Plans MUST account for variable inference cost and unit
+   economics when recommending automation.
+ 
+ ## Kit Namespace & Coexistence
+ 
+ This repo is a worked example of how to build Spec-Kit variants.
+ 
+ Rules:
+ 
+ - **Executable name**: This kit's executable SHOULD be `sales`.
+ - **Slash commands**: This kit's workflow namespace MUST be `saleskit.*`.
+ - **Kit package folder**: References to kit-owned assets MUST use `.saleskit/` paths
+   (e.g., `.saleskit/memory/constitution.md`).
+ - **Upstream compatibility**: If upstream uses a local helper executable like `./specify`,
+   that name SHOULD remain `./specify` when referring to the command.
+ 
+ ## Workflow & Quality Gates
+ 
+ Sales-AI-Kit follows Spec-Driven Development with domain-adapted templates.
+ 
+ Required order:
+ 
+ - **Constitution**: Establish non-negotiable principles.
+ - **Specify**: Define the problem, users, constraints, and measurable success.
+ - **Clarify (optional but recommended)**: Resolve ambiguity before planning.
+ - **Plan**: Choose approach, structure, and domain tactics.
+ - **Tasks**: Produce a dependency-ordered execution list.
+ - **Implement**: Execute tasks with checkpoints and quality gates.
+ 
+ Quality gates:
+ 
+ - **No namespace collisions**: New commands, folders, and package names MUST remain
+   kit-scoped.
+ - **Template consistency**: Templates MUST reference `saleskit.*` workflows and `.saleskit/`
+   kit paths.
+ - **Reviewability**: Generated artifacts MUST be readable and auditable by humans.
+ 
+ ## Governance
+ 
+ This constitution supersedes all other project guidance.
+ 
+ - **Amendment process**: Changes MUST be made via explicit edits to this file and MUST
+   include a rationale and a migration note when behavior expectations change.
+ - **Versioning**: The constitution MUST follow semantic versioning (MAJOR.MINOR.PATCH).
+   - MAJOR: breaking governance changes or principle removals/redefinitions
+   - MINOR: new principles/sections or materially expanded guidance
+   - PATCH: clarifications, wording, typo fixes
+ - **Compliance checks**: Plans and tasks SHOULD include a brief constitution compliance
+   checkpoint when changes impact naming, workflow shape, or cross-kit interop.
+ 
+ **Version**: 1.1.0 | **Ratified**: TODO(RATIFICATION_DATE) | **Last Amended**: 2025-12-16
