@@ -42,11 +42,11 @@
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-**Purpose**: Lock the namespace strategy and encode the “two meanings of specify” rule into the kit implementation.
+**Purpose**: Lock the namespace strategy and encode the "two meanings of specify" rule into the kit implementation.
 
-- [ ] T006 Define the canonical namespace matrix in `specs/001-saleskit-foundation/plan.md` (executable `sales`, workflows `/saleskit.*`, module `saleskit`, dist e.g. `sales-cli`, kit folder `.saleskit/`)
-- [ ] T007 Add a naming collision checklist section to `specs/001-saleskit-foundation/plan.md` (explicit: keep `./specify` verb/executable references; avoid `specify` for dist/module/folder)
-- [ ] T008 [P] Add a “working-copy constraint” checklist section to `specs/001-saleskit-foundation/plan.md` (explicit: do not modify `.windsurf/` or `.claude/` in this repo)
+- [X] T006 Define the canonical namespace matrix in `specs/001-saleskit-foundation/plan.md` (executable `sales`, workflows `/saleskit.*`, module `saleskit`, dist e.g. `sales-cli`, kit folder `.saleskit/`)
+- [X] T007 Add a naming collision checklist section to `specs/001-saleskit-foundation/plan.md` (explicit: keep `./specify` verb/executable references; avoid `specify` for dist/module/folder)
+- [X] T008 [P] Add a "working-copy constraint" checklist section to `specs/001-saleskit-foundation/plan.md` (explicit: do not modify `.windsurf/` or `.claude/` in this repo)
 
 **Checkpoint**: Foundation rules are explicit; implementation tasks can reference them.
 
@@ -60,13 +60,13 @@
 
 ### Implementation for User Story 1
 
-- [ ] T009 [US1] Create `pyproject.toml` with a non-colliding distribution name (e.g., `sales-cli`) at `pyproject.toml`
-- [ ] T010 [P] [US1] Define console script entrypoint `sales` in `pyproject.toml` (e.g., `[project.scripts] sales = "saleskit.cli:main"`)
-- [ ] T011 [P] [US1] Create Python package root at `src/saleskit/__init__.py`
-- [ ] T012 [P] [US1] Implement minimal CLI entrypoint in `src/saleskit/cli.py` (prints help and supports subcommands scaffold)
-- [ ] T013 [US1] Add a “namespace self-check” command in `src/saleskit/cli.py` (prints resolved kit namespace values: dist/module/hidden-folder)
-- [ ] T014 [US1] Add a smoke-test script for local install in `scripts/smoke/test_install.sh` (install + `sales --help`)
-- [ ] T015 [US1] Document the multi-kit install test procedure in `specs/001-saleskit-foundation/validation/multi-kit-install.md`
+- [X] T009 [US1] Create `pyproject.toml` with a non-colliding distribution name (e.g., `sales-cli`) at `pyproject.toml`
+- [X] T010 [P] [US1] Define console script entrypoint `sales` in `pyproject.toml` (e.g., `[project.scripts] sales = "saleskit.cli:main"`)
+- [X] T011 [P] [US1] Create Python package root at `src/saleskit/__init__.py`
+- [X] T012 [P] [US1] Implement minimal CLI entrypoint in `src/saleskit/cli.py` (prints help and supports subcommands scaffold)
+- [X] T013 [US1] Add a "namespace self-check" command in `src/saleskit/cli.py` (prints resolved kit namespace values: dist/module/hidden-folder)
+- [X] T014 [US1] Add a smoke-test script for local install in `scripts/smoke/test_install.sh` (install + `sales --help`)
+- [X] T015 [US1] Document the multi-kit install test procedure in `specs/001-saleskit-foundation/validation/multi-kit-install.md`
 
 **Checkpoint**: You can install and invoke `sales` without replacing `specify`.
 
@@ -80,12 +80,12 @@
 
 ### Implementation for User Story 2
 
-- [ ] T016 [P] [US2] Update spec template language to be Sales/GTM oriented in `.specify/templates/spec-template.md`
-- [ ] T017 [P] [US2] Update plan template to reference `/saleskit.plan` (not `/speckit.plan`) in `.specify/templates/plan-template.md`
-- [ ] T018 [P] [US2] Update tasks template to reference `/saleskit.tasks` (not `/speckit.tasks`) in `.specify/templates/tasks-template.md`
-- [ ] T019 [P] [US2] Update checklist template to reference `/saleskit.checklist` (not `/speckit.checklist`) in `.specify/templates/checklist-template.md`
-- [ ] T020 [US2] Ensure all templates describe generated-project kit-owned assets using `.saleskit/` paths (not `.specify/`) in `.specify/templates/*.md`
-- [ ] T021 [US2] Add explicit governance guidance text (HITL for outbound, auditability, truthfulness) to `.specify/templates/spec-template.md` and `.specify/templates/plan-template.md`
+- [X] T016 [P] [US2] Update spec template language to be Sales/GTM oriented in `.saleskit/templates/spec-template.md`
+- [X] T017 [P] [US2] Update plan template to reference `/saleskit.plan` (not `/speckit.plan`) in `.saleskit/templates/plan-template.md`
+- [X] T018 [P] [US2] Update tasks template to reference `/saleskit.tasks` (not `/speckit.tasks`) in `.saleskit/templates/tasks-template.md`
+- [X] T019 [P] [US2] Update checklist template to reference `/saleskit.checklist` (not `/speckit.checklist`) in `.saleskit/templates/checklist-template.md`
+- [X] T020 [US2] Ensure all templates describe generated-project kit-owned assets using `.saleskit/` paths (not `.specify/`) in `.saleskit/templates/*.md`
+- [X] T021 [US2] Add explicit governance guidance text (HITL for outbound, auditability, truthfulness) to `.saleskit/templates/spec-template.md` and `.saleskit/templates/plan-template.md`
 
 **Checkpoint**: Templates consistently produce Sales-AI-Kit artifacts and use the `saleskit` namespace.
 
