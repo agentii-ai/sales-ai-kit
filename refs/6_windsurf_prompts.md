@@ -3,7 +3,7 @@
 > **Last Updated (NYC):** 2025-12-03 04:34
 
 
-# Step 6.1: Use Claude Code to build constitution.md
+# Step 6.1: Use windsurf to build constitution.md
 
 ```prompt
 
@@ -25,26 +25,26 @@ IMPORTANT: The word "specify" shows up in two situations. One situation is as th
 ```
 
 
-# Step 6.2: Use Claude Code to build spec.md
+# Step 6.2: Use windsurf to build spec.md
 
 
 
 ```prompt
-/specify is running… this blog-tech-kit project is a fork of the github.com spec-kit project. read @README_spec-kit.md to get a global view of the original spec-kit project and its spec-driven development workflow.
+/specify is running… this sales-ai-kit project is a fork of the github.com spec-kit project. read @README_spec-kit.md to get a global view of the original spec-kit project and its spec-driven development workflow.
 
-spec-driven development is a strong methodology for complex work with llm-based agents, and the same pattern can be applied to many domains (project management, product design, marketing, business writing, etc.). blog-tech-kit is a featured variant of spec-kit focused on project management for discovering and validating product-market fit for ai saas products.
+spec-driven development is a strong methodology for complex work with llm-based agents, and the same pattern can be applied to many domains (project management, product design, marketing, business writing, etc.). sales-ai-kit is a featured variant of spec-kit focused on ai driven sales and marketing growth for ai saas products.
 
-read @memory/constitution.md and generate the spec.md for this project. you MUST also read @refs/2_define_for_specify.md and follow its structure and intent.
+read @memory/constitution.md and generate the spec.md for this project. you MUST also read @refs/0_overview.md and @refs/1_principles_for_constitution.md and follow its structure and intent.
 
 there are a few important constraints:
 1. re-use the overall spec-kit design, including the cli model and how it integrates with claude code, cursor, and other coding agents.
-2. assume users may install multiple *-kit variants on the same machine, so the base `specify` command name can conflict across packages. design a clean naming and namespace strategy so spec-kit, blog-tech-kit, pd-kit, and other variants can coexist.
-3. related to (2), slash commands like `blogkit.plan` and `blogkit.implement` are how agents invoke workflows. ensure there is no conflict between commands such as `specify.plan` and `blogkit.plan`, and that each reliably triggers the correct workflow.
+2. assume users may install multiple *-kit variants on the same machine, so the base `specify` command name can conflict across packages. design a clean naming and namespace strategy so spec-kit, blog-tech-kit, sales-ai-kit, pd-kit, and other variants can coexist.
+3. related to (2), slash commands like `saleskit.plan` and `saleskit.implement` are how agents invoke workflows. ensure there is no conflict between commands such as `specify.plan` and `saleskit.plan`, and that each reliably triggers the correct workflow.
 
-think carefully and globally about architecture, naming, and multi-kit coexistence first, then draft a clear, opinionated spec.md for blog-tech-kit that is consistent with @memory/constitution.md and suitable as a reference for future *-kit variants.
+think carefully and globally about architecture, naming, and multi-kit coexistence first, then draft a clear, opinionated spec.md for sales-ai-kit that is consistent with @memory/constitution.md and suitable as a reference for future *-kit variants.
 
-IMPORTANT: DO NOT modify the .claude/ folder - it's a working copy from spec-kit for the current Claude Code agent to use.
-IMPORTANT: The word "specify" shows up in two situations. One situation is as the command name like in "speckit.specify" or "./specify". In this situation, when change to "blogkit.specify" , or "./specify", you should keep as it is for consistency. In the second situation, "specify" refers to the package name, like in folder name for "./specify/memory/constituation.md". Since multiple spec-kit like kits may work together in the same project, their package names should be distinct to avoid conflicts. Change "./specify/memory/constituation.md" to "./blogkit/memory/constituation.md" 
+IMPORTANT: DO NOT modify the .windsurf/ folder - it's a working copy from spec-kit for the current Windsurf agent to use.
+IMPORTANT: The word "specify" shows up in two situations. One situation is as the command name like in "speckit.specify" or "./specify". In this situation, when change to "saleskit.specify" , or "./specify", you should keep as it is for consistency. In the second situation, "specify" refers to the package name, like in folder name for "./specify/memory/constituation.md". Since multiple spec-kit like kits may work together in the same project, their package names should be distinct to avoid conflicts. Change "./specify/memory/constituation.md" to "./saleskit/memory/constituation.md" 
 REMEMBER to edit the package names in pyproject.toml file.
 ```
 
