@@ -54,24 +54,24 @@ REMEMBER to edit the package names in pyproject.toml file.
 
 ```prompt
 
-/plan this blog-tech-kit project is a fork of the github.com spec-kit project. read @README_spec-kit.md to get a global view of the original spec-kit project and its spec-driven development workflow.
+/plan this sales-ai-kit project is a fork of the github.com spec-kit project. read @README_spec-kit.md to get a global view of the original spec-kit project and its spec-driven development workflow.
 
-spec-driven development is a strong methodology for complex work with llm-based agents, and the same pattern can be applied to many domains (project management, product design, marketing, business writing, etc.). blog-tech-kit is a featured variant of spec-kit focused on project management for discovering and validating product-market fit for ai saas products.
+spec-driven development is a strong methodology for complex work with llm-based agents, and the same pattern can be applied to many domains (project management, product design, marketing, business writing, etc.). sales-ai-kit is a featured variant of spec-kit focused on project management for discovering and validating product-market fit for ai saas products.
 
-for this task, read @memory/constitution.md and @specs/000-blog-tech-kit-foundation/spec.md. you MUST also read @refs/3_project_mangement_for_plan.md and follow its structure and intent when generating plan.md.
+for this task, read @memory/constitution.md and @specs/001-saleskit-foundation/spec.md. you MUST also read @refs/3_project_mangement_for_plan.md and follow its structure and intent when generating plan.md.
 
 there are a few important constraints:
 1. re-use the overall spec-kit design, including how it is installed, how the cli works, and how it integrates with claude code, cursor, and other coding agents.
 2. assume users may install multiple *-kit variants on the same machine, so the base `specify` command name can conflict across packages. design a clean naming and namespace strategy so spec-kit, blog-kit, pd-kit, and other variants can coexist.
-3. related to (2), slash commands like `blogkit.plan` and `blogkit.implement` are how agents invoke workflows. ensure there is no conflict between commands such as `blogkit.plan` and `blogkit.plan`, and that each reliably triggers the correct workflow.
+3. related to (2), slash commands like `saleskit.plan` and `saleskit.implement` are how agents invoke workflows. ensure there is no conflict between commands such as `saleskit.plan` and `specify.plan`, and that each reliably triggers the correct workflow.
 
-think carefully and globally about architecture, naming, and multi-kit coexistence first. then generate a clear, opinionated plan.md for blog-kit that:
+think carefully and globally about architecture, naming, and multi-kit coexistence first. then generate a clear, opinionated plan.md for saleskit that:
 - respects the principles in @memory/constitution.md,
-- aligns with the spec in @specs/000-blog-tech-kit-foundation/spec.md, and
-- can guide edits to the spec-kit templates in @templates/ and @templates/commands/ to swap `blogkit` → `blogkit` **without** changing the underlying infrastructure.
+- aligns with the spec in @specs/001-saleskit-foundation/spec.md, and
+- can guide edits to the spec-kit templates in @templates/ and @templates/commands/ to swap `speckit` → `saleskit` **without** changing the underlying infrastructure.
 
-IMPORTANT: DO NOT modify the .claude/ folder - it's a working copy from spec-kit for the current Claude Code agent to use.
-IMPORTANT: The word "specify" shows up in two situations. One situation is as the command name like in "speckit.specify" or "./specify". In this situation, when change to "blogkit.specify" , or "./specify", you should keep as it is for consistency. In the second situation, "specify" refers to the package name, like in folder name for "./specify/memory/constituation.md". Since multiple spec-kit like kits may work together in the same project, their package names should be distinct to avoid conflicts. Change "./specify/memory/constituation.md" to "./blogkit/memory/constituation.md" 
+IMPORTANT: DO NOT modify the .windsurf/ folder - it's a working copy from spec-kit for the current windsurf agent to use.
+IMPORTANT: The word "specify" shows up in two situations. One situation is as the command name like in "speckit.specify" or "./specify". In this situation, when change to "saleskit.specify" , or "./specify", you should keep as it is for consistency. In the second situation, "specify" refers to the package name, like in folder name for "./specify/memory/constituation.md". Since multiple spec-kit like kits may work together in the same project, their package names should be distinct to avoid conflicts. Change "./specify/memory/constituation.md" to "./saleskit/memory/constituation.md" 
 REMEMBER to edit the package names in pyproject.toml file.
 
 ```
@@ -83,24 +83,24 @@ REMEMBER to edit the package names in pyproject.toml file.
 
 ```prompt
 
-/tasks is running… this blog-tech-kit project is a fork of the github.com spec-kit project. read @README_spec-kit.md to get a global view of the original spec-kit project and its spec-driven development workflow.
+/tasks is running… this sales-ai-kit project is a fork of the github.com spec-kit project. read @README_spec-kit.md to get a global view of the original spec-kit project and its spec-driven development workflow.
 
-spec-driven development is a strong methodology for complex work with llm-based agents, and the same pattern can be applied to many domains (project management, product design, marketing, business writing, etc.). blog-tech-kit is a featured variant of spec-kit focused on project management for discovering and validating product-market fit for ai saas products.
+spec-driven development is a strong methodology for complex work with llm-based agents, and the same pattern can be applied to many domains (project management, product design, marketing, business writing, etc.). sales-ai-kit is a featured variant of spec-kit focused on sales and go-to-market artifacts.
 
-for this task, read @memory/constitution.md, @specs/000-blog-tech-kit-foundation/spec.md, and @specs/000-blog-tech-kit-foundation/plan.md. you MUST also read @refs/4_pm_tasking_for_tasks.md and follow its structure and intent when generating tasks.md. and tasking_methodology.md
+for this task, read @memory/constitution.md, @specs/001-saleskit-foundation/spec.md, and @specs/001-saleskit-foundation/plan.md. you MUST also read @refs/4_pm_tasking_for_tasks.md and follow its structure and intent when generating tasks.md. and tasking_methodology.md
 
 there are a few important constraints:
 1. re-use the overall spec-kit design, including how it is installed, how the cli works, and how it integrates with claude code, cursor, and other coding agents.
 2. assume users may install multiple *-kit variants on the same machine, so the base `specify` command name can conflict across packages. design a clean naming and namespace strategy so spec-kit, blog-kit, pd-kit, and other variants can coexist.
-3. related to (2), slash commands like `blogkit.plan` and `blogkit.implement` are how agents invoke workflows. ensure there is no conflict between commands such as `blogkit.plan` and `blogkit.plan`, and that each reliably triggers the correct workflow.
+3. related to (2), slash commands like `saleskit.plan` and `saleskit.implement` are how agents invoke workflows. ensure there is no conflict between commands such as `speckit.plan` and `speckit.implement`, and that each reliably triggers the correct workflow.
 
-think carefully and globally about architecture, naming, and multi-kit coexistence first. then generate a clear, opinionated tasks.md for blog-kit that:
+think carefully and globally about architecture, naming, and multi-kit coexistence first. then generate a clear, opinionated tasks.md for sales-ai-kit that:
 - respects the principles in @memory/constitution.md,
-- aligns with the spec and plan in @specs/000-blog-tech-kit-foundation/, and
-- can guide edits to the spec-kit templates in @templates/ and @templates/commands/ to swap `blogkit` → `blogkit` **without** changing the underlying infrastructure. continue writing tasks.md in the current git branch.
+- aligns with the spec and plan in @specs/001-saleskit-foundation/, and
+- can guide edits to the spec-kit templates in @templates/ and @templates/commands/ to swap `speckit` → `saleskit` **without** changing the underlying infrastructure. continue writing tasks.md in the current git branch.
 
-IMPORTANT: DO NOT modify the .claude/ folder - it's a working copy from spec-kit for the current Claude Code agent to use.
-IMPORTANT: The word "specify" shows up in two situations. One situation is as the command name like in "speckit.specify" or "./specify". In this situation, when change to "blogkit.specify" , or "./specify", you should keep as it is for consistency. In the second situation, "specify" refers to the package name, like in folder name for "./specify/memory/constituation.md". Since multiple spec-kit like kits may work together in the same project, their package names should be distinct to avoid conflicts. Change "./specify/memory/constituation.md" to "./blogkit/memory/constituation.md" 
+IMPORTANT: DO NOT modify the .claude/ and .windsurf/ folder - it's a working copy from spec-kit for the current Claude Code and Windsurf agent to use.
+IMPORTANT: The word "specify" shows up in two situations. One situation is as the command name like in "speckit.specify" or "./specify". In this situation, when change to "saleskit.specify" , or "./specify", you should keep as it is for consistency. In the second situation, "specify" refers to the package name, like in folder name for "./specify/memory/constituation.md". Since multiple spec-kit like kits may work together in the same project, their package names should be distinct to avoid conflicts. Change "./specify/memory/constituation.md" to "./saleskit/memory/constituation.md" 
 REMEMBER to edit the package names in pyproject.toml file.
 
 ```
@@ -109,24 +109,24 @@ REMEMBER to edit the package names in pyproject.toml file.
 
 
 ```prompt
-/implement this blog-tech-kit project is a fork of the github.com spec-kit project. read @README_spec-kit.md to get a global view of the original spec-kit project and its spec-driven development workflow.
+/implement this sales-ai-kit project is a fork of the github.com spec-kit project. read @README_spec-kit.md to get a global view of the original spec-kit project and its spec-driven development workflow.
 
-spec-driven development is a strong methodology for complex work with llm-based agents, and the same pattern can be applied to many domains (project management, product design, marketing, business writing, etc.). blog-tech-kit is a featured variant of spec-kit focused on project management for discovering and validating product-market fit for ai saas products.
+spec-driven development is a strong methodology for complex work with llm-based agents, and the same pattern can be applied to many domains (project management, product design, marketing, business writing, etc.). sales-ai-kit is a featured variant of spec-kit focused on sales and go-to-market artifacts.
 
-for this task, read @memory/constitution.md, @specs/000-blog-tech-kit-foundation/spec.md, and @specs/000-blog-tech-kit-foundation/plan.md. you MUST also read @refs/4_pm_tasking_for_tasks.md and follow its structure and intent when generating tasks.md. and tasking_methodology.md
+for this task, read @memory/constitution.md, @specs/001-saleskit-foundation/spec.md, and @specs/001-saleskit-foundation/plan.md. you MUST also read @refs/4_pm_tasking_for_tasks.md and follow its structure and intent when generating tasks.md. and tasking_methodology.md
 
 there are a few important constraints:
 1. re-use the overall spec-kit design, including how it is installed, how the cli works, and how it integrates with claude code, cursor, and other coding agents.
-2. assume users may install multiple *-kit variants on the same machine, so the base `specify` command name can conflict across packages. design a clean naming and namespace strategy so spec-kit, blog-kit, pd-kit, and other variants can coexist.
-3. related to (2), slash commands like `blogkit.plan` and `blogkit.implement` are how agents invoke workflows. ensure there is no conflict between commands such as `blogkit.plan` and `blogkit.plan`, and that each reliably triggers the correct workflow.
+2. assume users may install multiple *-kit variants on the same machine, so the base `specify` command name can conflict across packages. design a clean naming and namespace strategy so spec-kit, sales-kit, pd-kit, and other variants can coexist.
+3. related to (2), slash commands like `saleskit.plan` and `saleskit.implement` are how agents invoke workflows. ensure there is no conflict between commands such as `saleskit.plan` and `speckit.plan`, and that each reliably triggers the correct workflow.
 
-think carefully and globally about architecture, naming, and multi-kit coexistence first. then generate a clear, opinionated tasks.md for blog-kit that:
+think carefully and globally about architecture, naming, and multi-kit coexistence first. then generate a clear, opinionated tasks.md for sales-ai-kit that:
 - respects the principles in @memory/constitution.md,
 - aligns with the spec and plan in @specs/000-blog-tech-kit-foundation/, and
-- can guide edits to the spec-kit templates in @templates/ and @templates/commands/ to swap `blogkit` → `blogkit` **without** changing the underlying infrastructure. continue writing tasks.md in the current git branch.
+- can guide edits to the spec-kit templates in @templates/ and @templates/commands/ to swap `saleskit` → `speckit` **without** changing the underlying infrastructure. continue writing tasks.md in the current git branch.
 
 IMPORTANT: DO NOT modify the .claude/ folder - it's a working copy from spec-kit for the current Claude Code agent to use.
-IMPORTANT: The word "specify" shows up in two situations. One situation is as the command name like in "speckit.specify" or "./specify". In this situation, when change to "blogkit.specify" , or "./specify", you should keep as it is for consistency. In the second situation, "specify" refers to the package name, like in folder name for "./specify/memory/constituation.md". Since multiple spec-kit like kits may work together in the same project, their package names should be distinct to avoid conflicts. Change "./specify/memory/constituation.md" to "./blogkit/memory/constituation.md" 
+IMPORTANT: The word "specify" shows up in two situations. One situation is as the command name like in "speckit.specify" or "./specify". In this situation, when change to "saleskit.specify" , or "./specify", you should keep as it is for consistency. In the second situation, "specify" refers to the package name, like in folder name for "./specify/memory/constituation.md". Since multiple spec-kit like kits may work together in the same project, their package names should be distinct to avoid conflicts. Change "./specify/memory/constituation.md" to "./saleskit/memory/constituation.md" 
 REMEMBER to edit the package names in pyproject.toml file.
 
 ```

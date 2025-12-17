@@ -32,3 +32,4 @@
 ## Notes
 
 - The spec mentions a "Python distribution/package name" as part of the namespace isolation requirements. This is treated as a packaging-level constraint required for multi-kit coexistence, not an implementation choice (no frameworks/APIs are specified).
+ - The spec references `pyproject.toml` only as the location for packaging metadata updates required to prevent cross-kit naming collisions; it does not specify application implementation details.
