@@ -30,11 +30,11 @@
 
 **Purpose**: Verify starting state and protect constraints.
 
-- [ ] T001 Verify you are on branch `001-saleskit-foundation` (`git status`)
-- [ ] T002 Verify constraints: do not modify `.windsurf/` or `.claude/` in this repo (document in `specs/001-saleskit-foundation/plan.md` if needed)
-- [ ] T003 [P] Verify `refs/` is a normal tracked folder (not a submodule) (`git ls-files refs/`)
-- [ ] T004 [P] Verify feature docs exist: `specs/001-saleskit-foundation/spec.md` and `specs/001-saleskit-foundation/plan.md`
-- [ ] T005 [P] Inspect existing templates in `.specify/templates/` for any remaining `speckit.*` references (grep)
+- [X] T001 Verify you are on branch `001-saleskit-foundation` and record output in `specs/001-saleskit-foundation/checklists/setup.md`
+- [X] T002 Verify constraints are documented (no edits to `.windsurf/` and `.claude/`) in `specs/001-saleskit-foundation/plan.md`
+- [X] T003 [P] Verify `refs/` is a normal tracked folder (not a submodule) and record output in `specs/001-saleskit-foundation/checklists/setup.md`
+- [X] T004 [P] Verify feature docs exist and record output in `specs/001-saleskit-foundation/checklists/setup.md`
+- [X] T005 [P] Identify and remove remaining user-facing `speckit.*` references in `.specify/templates/*.md` (do not touch `.windsurf/` or `.claude/`)
 
 **Checkpoint**: Preconditions verified; safe to implement without breaking agent working copies.
 
@@ -52,7 +52,7 @@
 
 ---
 
-## Phase 3: User Story 1 — Coexist with other *-kit variants on one machine (Priority: P1) 🎯 MVP
+## Phase 3: User Story 1 — Coexist with other *-kit variants on one machine (Priority: P1) MVP
 
 **Goal**: Make Sales-AI-Kit installable alongside Spec-Kit without collisions (dist name, import namespace, executable).
 
@@ -66,7 +66,7 @@
 - [ ] T012 [P] [US1] Implement minimal CLI entrypoint in `src/saleskit/cli.py` (prints help and supports subcommands scaffold)
 - [ ] T013 [US1] Add a “namespace self-check” command in `src/saleskit/cli.py` (prints resolved kit namespace values: dist/module/hidden-folder)
 - [ ] T014 [US1] Add a smoke-test script for local install in `scripts/smoke/test_install.sh` (install + `sales --help`)
-- [ ] T015 [US1] Document the multi-kit install test procedure in `specs/001-saleskit-foundation/tasks.md` (append under Phase 3 Notes section)
+- [ ] T015 [US1] Document the multi-kit install test procedure in `specs/001-saleskit-foundation/validation/multi-kit-install.md`
 
 **Checkpoint**: You can install and invoke `sales` without replacing `specify`.
 
@@ -131,9 +131,9 @@
 
 **Purpose**: Add validation, tighten consistency, and ensure repeatable execution (PDCA-style checkpoints per `refs/4_pm_tasking_for_tasks.md`).
 
-- [ ] T032 [P] Add a multi-kit validation checklist to `specs/001-saleskit-foundation/tasks.md` (install both kits, run both CLIs, verify namespaces)
-- [ ] T033 [P] Add a weekly PDCA checklist section to `specs/001-saleskit-foundation/tasks.md` (Plan/Do/Check/Act for naming collisions + template regressions)
-- [ ] T034 Run a repo-wide grep for `speckit.` and replace remaining user-facing references with `saleskit.` where appropriate (do not touch `.windsurf/` or `.claude/`) in `.specify/`
+- [ ] T032 [P] Add a multi-kit validation checklist to `specs/001-saleskit-foundation/validation/multi-kit-validation.md` (install both kits, run both CLIs, verify namespaces)
+- [ ] T033 [P] Add a weekly PDCA checklist section to `specs/001-saleskit-foundation/validation/pdca.md` (Plan/Do/Check/Act for naming collisions + template regressions)
+- [ ] T034 Run a repo-wide grep for `speckit.` and replace remaining user-facing references with `saleskit.` where appropriate in `.specify/**/*.md` (do not touch `.windsurf/` or `.claude/`)
 - [ ] T035 Ensure no kit-owned paths mention `.specify/` when describing generated projects (use `.saleskit/`) in `.specify/templates/*.md`
 
 **Checkpoint**: Repo is consistent, constraints are respected, and workflows are repeatable.
