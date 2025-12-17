@@ -1,0 +1,59 @@
+[project]
+name = "sales-cli"
+version = "0.1.0"
+description = "Sales-AI-Kit: Spec-driven development for AI/LLM SaaS sales and marketing"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Sales-AI-Kit Contributors"}
+]
+keywords = ["sales", "marketing", "gtm", "ai-saas", "spec-driven", "plg", "slg", "alg"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+sales = "saleskit.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/sales-ai-kit/sales-ai-kit"
+Repository = "https://github.com/sales-ai-kit/sales-ai-kit"
+Issues = "https://github.com/sales-ai-kit/sales-ai-kit/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/saleskit"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "N", "W"]
+ignore = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"

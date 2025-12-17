@@ -4,7 +4,7 @@
 
 # Step 4: Tasking methodology
 
-Step 4 corresponds to the **tasks.md / `/blogkit.tasks`** phase in Spec Kit, but focused on **blog driven growth for an AI/LLM SaaS product**, not on code implementation.
+Step 4 corresponds to the **tasks.md / `/saleskit.tasks`** phase in Spec Kit, but focused on **sales and growth for an AI/LLM SaaS product**, not on code implementation.
 
 Where `plan.md` (Step 3) defines *strategy and plan* (objectives, wedge, channels, growth loops, experiments), this step turns that plan into an **executable task list**:
 

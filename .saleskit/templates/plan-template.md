@@ -3,7 +3,7 @@
 **Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
 **Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
 
-**Note**: This template is filled in by the `/saleskit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
+**Note**: This template is filled in by the `/saleskit.plan` command. The execution workflow is defined in `.saleskit/templates/commands/saleskit.plan.md` and copied to your agent's command directory during `sales init`.
 
 ## Summary
 
@@ -32,6 +32,42 @@
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
 [Gates determined based on constitution file]
+
+## Agent Governance (Sales/GTM Features)
+
+<!--
+  SALES-AI-KIT: For features involving AI-driven GTM automation (outbound, lead scoring,
+  personalization, pricing), explicitly document governance constraints.
+
+  Default: Human-in-the-loop (HITL) for autonomous actions unless explicitly justified.
+-->
+
+**Applies to this feature**: [Yes | No]
+
+If yes, document:
+
+- **Human-in-the-loop (HITL)**: [Required | Optional (with justification)]
+  - For which actions? [e.g., sending emails, updating CRM, pricing changes]
+  - Approval gates: [e.g., review queue, threshold-based auto-approval]
+  - Rollback procedures: [e.g., undo queue, manual override]
+
+- **Autonomous Actions**: [List any actions that may run without human approval]
+  - Action 1: [e.g., "Score leads automatically"] - Justification: [Low risk, reversible]
+  - Action 2: [e.g., "Send personalized emails"] - Requires: [HITL approval gate]
+
+- **Auditability**: [Required | Not applicable]
+  - All automated decisions logged: [Yes | No]
+  - Trace inputs → outputs: [Yes | No]
+  - Retention period: [e.g., 90 days, indefinite]
+
+- **Truthfulness Constraints**: [Required | Not applicable]
+  - Generated content reviewed for fabricated claims: [Yes | No]
+  - Prohibited: Fake metrics, customers, case studies without validation
+
+- **Cost & ROI Discipline**: [Required | Not applicable]
+  - Inference cost per action: [Estimate or "NEEDS MEASUREMENT"]
+  - Unit economics: [e.g., "Cost per qualified lead must be <$X"]
+  - Spending limits: [e.g., "Max $Y/day on automated outreach"]
 
 ## Project Structure
 
