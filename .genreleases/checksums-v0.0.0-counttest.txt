@@ -1,0 +1,1 @@
+53c5185ed83e85a8ff7387a237735ed430dad0471c227e1e5013f71a084f0e1d  spec-kit-template-claude-sh-v0.0.0-counttest.zip

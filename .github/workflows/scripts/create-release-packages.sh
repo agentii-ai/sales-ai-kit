@@ -20,6 +20,12 @@ fi
 GENRELEASES_DIR="${GENRELEASES_DIR:-$REPO_ROOT/.genreleases}"
 mkdir -p "$GENRELEASES_DIR"
 
+checksums_path="$GENRELEASES_DIR/checksums-${VERSION}.txt"
+
+# Make runs idempotent for a given version.
+rm -f "$GENRELEASES_DIR"/spec-kit-template-*-${VERSION}.zip
+: > "$checksums_path"
+
 ALL_AGENTS=(
   claude
   gemini
@@ -112,11 +118,30 @@ agent_format() {
 
 extract_description() {
   local template="$1"
-  local desc
-  desc="$(awk 'BEGIN{in=0} $0=="---"{in++; next} in==1 && $0 ~ /^description:/ {sub(/^description:[[:space:]]*/, ""); print; exit}' "$template" || true)"
-  desc="${desc%\"}"
-  desc="${desc#\"}"
-  echo "$desc"
+  python3 - <<'PY' "$template"
+import sys
+from pathlib import Path
+
+p = Path(sys.argv[1])
+text = p.read_text(encoding='utf-8')
+lines = text.splitlines()
+
+desc = ''
+if lines and lines[0].strip() == '---':
+  # parse markdown frontmatter
+  for i in range(1, len(lines)):
+    if lines[i].strip() == '---':
+      break
+    line = lines[i].strip()
+    if line.startswith('description:'):
+      v = line.split(':', 1)[1].strip()
+      if v.startswith('"') and v.endswith('"') and len(v) >= 2:
+        v = v[1:-1]
+      desc = v
+      break
+
+print(desc)
+PY
 }
 
 render_md() {
@@ -237,7 +262,7 @@ build_variant() {
   local sha
   sha="$(sha256_file "$zip_path")"
 
-  echo "$sha  $(basename "$zip_path")" >> "$GENRELEASES_DIR/checksums-${VERSION}.txt"
+  echo "$sha  $(basename "$zip_path")" >> "$checksums_path"
 
   rm -rf "$base_dir"
 }
@@ -258,5 +283,5 @@ for agent in "${agents_to_build[@]}"; do
   done
 done
 
-count="$(ls -1 "$GENRELEASES_DIR"/*.zip 2>/dev/null | wc -l | tr -d ' ')"
+count="$(ls -1 "$GENRELEASES_DIR"/spec-kit-template-*-${VERSION}.zip 2>/dev/null | wc -l | tr -d ' ')"
 echo "Generated $count template variants in $GENRELEASES_DIR"

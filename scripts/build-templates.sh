@@ -25,7 +25,8 @@ GENRELEASES_DIR="$GENRELEASES_DIR" \
 
 # Copy artifacts to dist
 shopt -s nullglob
-cp -f "$GENRELEASES_DIR"/*.zip "$DIST_DIR/"
+rm -f "$DIST_DIR"/*.zip
+cp -f "$GENRELEASES_DIR"/spec-kit-template-*-${VERSION}.zip "$DIST_DIR/"
 
 # Generate build manifest
 REPO_ROOT="$REPO_ROOT" python3 - <<'PY'
