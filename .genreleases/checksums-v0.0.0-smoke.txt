@@ -1,1 +1,2 @@
 3ae8c17e8a6d73d7d1ef2db37d0068148a43e81c54bb9e4ffe179ddb0ee39453  spec-kit-template-claude-sh-v0.0.0-smoke.zip
+b40ce44d157c3b8f07519343bd93618c5cdf9e47510721aff2291b673389001a  spec-kit-template-claude-sh-v0.0.0-smoke.zip

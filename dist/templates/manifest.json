@@ -1,12 +1,216 @@
 {
-  "generated_unix": 1766054463,
-  "count": 1,
+  "generated_unix": 1766054645,
+  "count": 35,
   "items": [
+    {
+      "file": "spec-kit-template-amp-ps-v0.0.0-full.zip",
+      "size_bytes": 86158,
+      "sha256": "8ab91f3f991a4255400e0744eb686d8dc66d7a260cf2a9957d5165a22c599401",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-amp-sh-v0.0.0-full.zip",
+      "size_bytes": 94801,
+      "sha256": "25931547762977f77fcb8fa9547053866df5f186ea097b3dfb3723604fad8a68",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-auggie-ps-v0.0.0-full.zip",
+      "size_bytes": 86342,
+      "sha256": "50256c4ca6264027b072fe6ebf498a8d9ec06feb74f9ef106d5046a53cb83e12",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-auggie-sh-v0.0.0-full.zip",
+      "size_bytes": 94985,
+      "sha256": "bc2faadf7ffa7f529211b34ca1cc03a8eccec0d710672576223bb43b068dee08",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-bob-ps-v0.0.0-full.zip",
+      "size_bytes": 86099,
+      "sha256": "a13e3cc33b8db6280ab2de669a73bab556a7724c9abd6d8c4ab3bf5c9cc7b115",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-bob-sh-v0.0.0-full.zip",
+      "size_bytes": 94742,
+      "sha256": "b879b91eea04bf1b30690ad7f3cac18bb7a03d6548b8749a40853d99ac38542f",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-claude-ps-v0.0.0-full.zip",
+      "size_bytes": 86376,
+      "sha256": "32b4736e9a5b5108b7695fc4a6c4c1d9a2c65cd66c790d725534e1d641bee9ff",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-claude-sh-v0.0.0-full.zip",
+      "size_bytes": 95019,
+      "sha256": "e841b6ebb920d3c04f5900dff26cff309b8f6f176089a497b3728b6bd4a6f2ab",
+      "modified_unix": 1766054645
+    },
     {
       "file": "spec-kit-template-claude-sh-v0.0.0-smoke.zip",
       "size_bytes": 95091,
-      "sha256": "3ae8c17e8a6d73d7d1ef2db37d0068148a43e81c54bb9e4ffe179ddb0ee39453",
-      "modified_unix": 1766054463
+      "sha256": "b40ce44d157c3b8f07519343bd93618c5cdf9e47510721aff2291b673389001a",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-codebuddy-ps-v0.0.0-full.zip",
+      "size_bytes": 86655,
+      "sha256": "a5afe383a96c7c6da0eba314eeb2d3794afeb15a541cd5e8947b0b10f8d30385",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-codebuddy-sh-v0.0.0-full.zip",
+      "size_bytes": 95298,
+      "sha256": "2883afe555b35c4f7afc6e7331cd2da167093c6b578c64ae9383746aea1b0ba0",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-codex-ps-v0.0.0-full.zip",
+      "size_bytes": 86285,
+      "sha256": "4bf823112b47c63304fdcec931a1cb0cf9784b9664e8c7051439ce58b3bd467d",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-codex-sh-v0.0.0-full.zip",
+      "size_bytes": 94928,
+      "sha256": "00c65c637e09ade8c5fe79a3f0439bc5c06cbbb6867c75f98d5f74657c826189",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-copilot-ps-v0.0.0-full.zip",
+      "size_bytes": 118231,
+      "sha256": "9490bdc18b60a83dda8f8576cecb6afd9ed3b08c483329c9da6286f27a49a744",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-copilot-sh-v0.0.0-full.zip",
+      "size_bytes": 126874,
+      "sha256": "e5d440d5ff630d80b8a8ecee98eb505c9c5dfa3fb78e370b14d099084f27d679",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-cursor-agent-ps-v0.0.0-full.zip",
+      "size_bytes": 86810,
+      "sha256": "39c8368a6fc76818bf26e8ecaaefd3971ed47f13079724448a8c5f38197b61b6",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-cursor-agent-sh-v0.0.0-full.zip",
+      "size_bytes": 95453,
+      "sha256": "120ce013ef2ac5df6c33a73aa2131efe2987d07fe3e91177a3806a6f3852165b",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-gemini-ps-v0.0.0-full.zip",
+      "size_bytes": 85275,
+      "sha256": "eefc7c841baa85d86fe0a3c3f45cb0eb9511159fb3a75f14061550c44e24d1ec",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-gemini-sh-v0.0.0-full.zip",
+      "size_bytes": 93918,
+      "sha256": "c862f07801c130902e522c5c13bbb27a0c5963d70ecc6fe5050c8bdda4945d1b",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-kilocode-ps-v0.0.0-full.zip",
+      "size_bytes": 86508,
+      "sha256": "03f4cf3ec19e9440195bf5cf222900490e1e1f24678a8b4cab704c66d4b31411",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-kilocode-sh-v0.0.0-full.zip",
+      "size_bytes": 95151,
+      "sha256": "675ac28381bf79d74b65aa997bd75d6ca4e46b5e0ff67e49dc98ef6883a65b88",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-opencode-ps-v0.0.0-full.zip",
+      "size_bytes": 86544,
+      "sha256": "c1b2e0bdcb2ab930be94be1312433d1372cbe27291a3eacbdb45360ab6635ed1",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-opencode-sh-v0.0.0-full.zip",
+      "size_bytes": 95187,
+      "sha256": "ee2088aeed25a2646e1444fb9f2eacefff7476b3ac2f796c8270d2439721070b",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-q-ps-v0.0.0-full.zip",
+      "size_bytes": 86016,
+      "sha256": "e2a7db5e2d5ea4709edaff4b454fdf52a77050cc45160dbc637ec4ccdec12234",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-q-sh-v0.0.0-full.zip",
+      "size_bytes": 94659,
+      "sha256": "0eee6bc505af2fe6277c64705b57b1b8f6a346901a27fc2364ea9641dccbf732",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-qoder-ps-v0.0.0-full.zip",
+      "size_bytes": 86285,
+      "sha256": "67d797bdda3cc4cf519af141727bd94f71da03c27b6241df5e9e0aac0a396f94",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-qoder-sh-v0.0.0-full.zip",
+      "size_bytes": 94928,
+      "sha256": "a94d268da90eddfdef108abfcedcddf7f482dd44ea8aea2fbf2675b919f71041",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-qwen-ps-v0.0.0-full.zip",
+      "size_bytes": 85091,
+      "sha256": "74b8e1d4350233508edfae706a5a463ef68c27b9fa972b73e426278c6b5c30e1",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-qwen-sh-v0.0.0-full.zip",
+      "size_bytes": 93734,
+      "sha256": "9b2ecc915cf6dbbb1d5f98b07702348f5f5b7c6c269ead28fc7fb82c6eb6aae6",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-roo-ps-v0.0.0-full.zip",
+      "size_bytes": 86044,
+      "sha256": "d7fdde4ad0117bd5542c303cfc896f6df3de9462890427eb24a6c9b2e5322cb0",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-roo-sh-v0.0.0-full.zip",
+      "size_bytes": 94687,
+      "sha256": "dc80c97d9b2db5fe5096b577d4f6ff7c70d43ff0f52ac3abc9d169fb30268666",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-shai-ps-v0.0.0-full.zip",
+      "size_bytes": 86191,
+      "sha256": "d29be60d25932da0b61d4fac720556ff756aeb6c24ee1780216850a794b6a7c6",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-shai-sh-v0.0.0-full.zip",
+      "size_bytes": 94834,
+      "sha256": "402b895e94088691519784715fd1176a56d35b8c1281c0777586f89bcd850791",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-windsurf-ps-v0.0.0-full.zip",
+      "size_bytes": 86579,
+      "sha256": "cfd0287e1d1cda9f3be822ef0a006c8d4d56779b3b3511aa02d0327af69cedb4",
+      "modified_unix": 1766054645
+    },
+    {
+      "file": "spec-kit-template-windsurf-sh-v0.0.0-full.zip",
+      "size_bytes": 95222,
+      "sha256": "20e9dea473438bca21dae549922cf9fb3ab3389bd6f2a2b0dde295ff4c788198",
+      "modified_unix": 1766054645
     }
   ]
 }

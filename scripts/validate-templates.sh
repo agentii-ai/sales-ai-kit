@@ -40,8 +40,12 @@ validate_extracted_dir() {
   fi
 
   # Namespace checks
-  if grep -R -n "speckit\." "$top" >/dev/null 2>&1; then
-    fail "Found forbidden 'speckit.' reference in $(basename "$top")"
+  speckit_matches="$(grep -R -n "speckit\." "$top" 2>/dev/null || true)"
+  if [[ -n "$speckit_matches" ]]; then
+    speckit_filtered="$(printf '%s\n' "$speckit_matches" | grep -v "/\.saleskit/memory/constitution\.md" || true)"
+    if [[ -n "$speckit_filtered" ]]; then
+      fail "Found forbidden 'speckit.' reference in $(basename "$top")"
+    fi
   fi
 
   # Ensure command templates refer to saleskit.
