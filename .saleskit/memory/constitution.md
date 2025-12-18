@@ -5,9 +5,9 @@
  - Added sections: None
  - Removed sections: Template placeholders
  - Templates requiring updates:
-   - updated: .specify/templates/plan-template.md
-   - updated: .specify/templates/tasks-template.md
-   - updated: .specify/templates/checklist-template.md
+   - updated: .saleskit/templates/plan-template.md
+   - updated: .saleskit/templates/tasks-template.md
+   - updated: .saleskit/templates/checklist-template.md
  - Follow-up TODOs:
    - TODO(RATIFICATION_DATE): set if different from first amendment date
  -->
