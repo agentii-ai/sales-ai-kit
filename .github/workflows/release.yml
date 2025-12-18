@@ -1,0 +1,63 @@
+name: Release Templates
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.saleskit/**'
+      - 'src/saleskit/**'
+      - '.github/workflows/**'
+      - 'scripts/**'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure git user
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+
+      - name: Get next version
+        id: get_tag
+        shell: bash
+        run: |
+          chmod +x .github/workflows/scripts/get-next-version.sh
+          .github/workflows/scripts/get-next-version.sh
+
+      - name: Check if release exists
+        id: check_release
+        shell: bash
+        run: |
+          chmod +x .github/workflows/scripts/check-release-exists.sh
+          .github/workflows/scripts/check-release-exists.sh "${{ steps.get_tag.outputs.new_version }}"
+
+      - name: Build release packages
+        if: steps.check_release.outputs.exists == 'false'
+        shell: bash
+        run: |
+          chmod +x .github/workflows/scripts/create-release-packages.sh
+          GENRELEASES_DIR=.genreleases .github/workflows/scripts/create-release-packages.sh "${{ steps.get_tag.outputs.new_version }}"
+
+      - name: Generate release notes
+        if: steps.check_release.outputs.exists == 'false'
+        shell: bash
+        run: |
+          chmod +x .github/workflows/scripts/generate-release-notes.sh
+          GENRELEASES_DIR=.genreleases .github/workflows/scripts/generate-release-notes.sh "${{ steps.get_tag.outputs.new_version }}"
+
+      - name: Create GitHub release
+        if: steps.check_release.outputs.exists == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          chmod +x .github/workflows/scripts/create-github-release.sh
+          GENRELEASES_DIR=.genreleases .github/workflows/scripts/create-github-release.sh "${{ steps.get_tag.outputs.new_version }}"

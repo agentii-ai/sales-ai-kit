@@ -6,11 +6,8 @@ collision-free namespace isolation.
 """
 
 import argparse
-import sys
-<<<<<<< HEAD
-=======
 import shutil
->>>>>>> 001-saleskit-foundation
+import sys
 from pathlib import Path
 
 
@@ -43,18 +40,6 @@ def cmd_namespace(args):
 
 def cmd_init(args):
     """Initialize a new Sales-AI-Kit project."""
-<<<<<<< HEAD
-    target_dir = Path(args.directory or ".")
-
-    print(f"Sales-AI-Kit Project Initialization")
-    print(f"Target directory: {target_dir.absolute()}")
-    print(f"\nNote: `sales init` implementation is pending.")
-    print(f"      This will scaffold .saleskit/ with templates and constitution.")
-
-    if args.ai:
-        print(f"      Agent target: {args.ai}")
-        print(f"      Will generate /{args.ai} workflow files for selected agent.")
-=======
     target_dir = Path(args.directory or ".").expanduser().resolve()
 
     print("Sales-AI-Kit Project Initialization")
@@ -90,13 +75,10 @@ def cmd_init(args):
     print("\nNext steps:")
     print("  - Start a feature: use your agent with /saleskit.specify")
     print("  - Inspect templates under .saleskit/")
->>>>>>> 001-saleskit-foundation
 
     return 0
 
 
-<<<<<<< HEAD
-=======
 def _find_saleskit_template_dir() -> Path | None:
     """Locate the repository's `.saleskit/` folder.
 
@@ -136,8 +118,6 @@ def _generate_agent_files(target_dir: Path, agent: str) -> None:
     print(f"  - Agent: {agent}")
     print(f"  - Destination: {dest_dir}")
 
-
->>>>>>> 001-saleskit-foundation
 def cmd_version(args):
     """Display Sales-AI-Kit version."""
     from saleskit import __version__

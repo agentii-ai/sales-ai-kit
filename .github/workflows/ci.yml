@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  templates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build templates (smoke)
+        shell: bash
+        run: |
+          chmod +x .github/workflows/scripts/create-release-packages.sh
+          GENRELEASES_DIR=.genreleases \
+            AGENTS=claude \
+            SCRIPTS=sh \
+            .github/workflows/scripts/create-release-packages.sh v0.0.0-ci
+
+      - name: Validate templates
+        shell: bash
+        run: |
+          chmod +x scripts/validate-templates.sh
+          scripts/validate-templates.sh .genreleases

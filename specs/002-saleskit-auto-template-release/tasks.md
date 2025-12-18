@@ -114,18 +114,18 @@ Create `.github/workflows/scripts/` directory structure and placeholder scripts.
 **Status**: Not Started
 
 **Description**:
-Implement the core build script that generates 36 template variants from `.saleskit/` source, packaging into `.saleskit/` structure.
+Implement the core build script that generates 34 template variants from `.saleskit/` source, packaging into `.saleskit/` structure.
 
 **Key Requirements**:
 
-- Builds 18 agents × 2 scripts = 36 variants
+- Builds 17 agents × 2 scripts = 34 variants
 - Uses `.saleskit/` as source and `.saleskit/` inside each generated ZIP
 - Generates agent-specific command/workflow files from `.saleskit/templates/commands/`
 - Names output archives: `spec-kit-template-{agent}-{script}-v{version}.zip`
 
 **Acceptance Criteria**:
 
-- ✅ Produces 36 ZIP files
+- ✅ Produces 34 ZIP files
 - ✅ Each ZIP contains `.saleskit/` with memory/templates/scripts
 - ✅ Each ZIP contains agent-specific assets
 - ✅ Script prints progress and exits non-zero on failure

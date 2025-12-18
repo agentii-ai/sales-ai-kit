@@ -9,17 +9,17 @@
 
 ### User Story 1 - Release Manager Creates New Sales-AI-Kit Release (Priority: P1)
 
-A Sales-AI-Kit maintainer wants to create a new release with templates for all supported AI agents (Claude, Cursor, Windsurf, Gemini, Copilot, Qoder, etc.) using both bash and PowerShell script variants. They should be able to trigger the release process that automatically generates 36 template ZIP files and publishes them to GitHub releases.
+A Sales-AI-Kit maintainer wants to create a new release with templates for all supported AI agents (Claude, Cursor, Windsurf, Gemini, Copilot, Qoder, etc.) using both bash and PowerShell script variants. They should be able to trigger the release process that automatically generates 34 template ZIP files and publishes them to GitHub releases.
 
 **Why this priority**: This is the core capability that enables Sales-AI-Kit to have its own releases and stop relying on Spec-Kit template fallback.
 
-**Independent Test**: Can be fully tested by triggering the release workflow, verifying all 36 ZIP files are generated correctly, and confirming the GitHub release is published with proper naming and versioning.
+**Independent Test**: Can be fully tested by triggering the release workflow, verifying all 34 ZIP files are generated correctly, and confirming the GitHub release is published with proper naming and versioning.
 
 **Acceptance Scenarios**:
 
 1. **Given** the maintainer has merged changes to main branch, **When** they push to main (affecting `.saleskit/`, `src/saleskit/`, or related release scripting paths), **Then** the automated workflow triggers and generates all template variants
 2. **Given** the workflow is running, **When** it processes each agent/script combination, **Then** it creates correctly structured ZIP files with Sales-AI-Kit branding and `/saleskit.*` commands
-3. **Given** all templates are generated, **When** the workflow publishes the release, **Then** a GitHub release appears with all 36 ZIP files attached and proper release notes
+3. **Given** all templates are generated, **When** the workflow publishes the release, **Then** a GitHub release appears with all 34 ZIP files attached and proper release notes
 4. **Given** a release is published, **When** users run `sales init my-project`, **Then** the CLI can use Sales-AI-Kit release assets (and does not require Spec-Kit template fallback)
 
 ---
@@ -34,7 +34,7 @@ A developer wants to test template generation locally before pushing changes, en
 
 **Acceptance Scenarios**:
 
-1. **Given** a developer has modified templates in `.saleskit/`, **When** they run `./scripts/build-templates.sh`, **Then** all 36 template variants are generated locally in `dist/templates/`
+1. **Given** a developer has modified templates in `.saleskit/`, **When** they run `./scripts/build-templates.sh`, **Then** all 34 template variants are generated locally in `dist/templates/`
 2. **Given** templates are built locally, **When** the developer inspects a ZIP file, **Then** it contains the correct directory structure with agent-specific commands and Sales-AI-Kit branding
 3. **Given** a build completes, **When** errors occur in any template, **Then** the script reports which template failed and provides actionable error messages
 4. **Given** local testing is complete, **When** the developer commits changes, **Then** CI validation runs the same build process to catch issues before release
@@ -73,8 +73,8 @@ The continuous integration system should validate that all templates are correct
 
 #### Template Generation
 
-- **FR-001**: System MUST generate template variants for all 18 supported AI agents: claude, cursor-agent, windsurf, gemini, copilot, qoder, qwen, opencode, codex, kilocode, auggie, codebuddy, amp, shai, q (Amazon Q), bob, roo
-- **FR-002**: System MUST generate both bash (sh) and PowerShell (ps) script variants for each agent, resulting in 36 total template combinations
+- **FR-001**: System MUST generate template variants for all 17 supported AI agents: claude, cursor-agent, windsurf, gemini, copilot, qoder, qwen, opencode, codex, kilocode, auggie, roo, codebuddy, amp, shai, q (Amazon Q), bob
+- **FR-002**: System MUST generate both bash (sh) and PowerShell (ps) script variants for each agent, resulting in 34 total template combinations
 - **FR-003**: Each template MUST include agent-specific command directory (e.g., `.claude/commands/`, `.cursor/commands/`, `.windsurf/workflows/`, etc.)
 - **FR-004**: Each template MUST contain Sales-AI-Kit specific files from `.saleskit/` directory: constitution.md from `.saleskit/memory/`, Sales/GTM spec/plan/tasks templates from `.saleskit/templates/`, and Sales-AI-Kit command files from `.saleskit/templates/commands/`
 - **FR-005**: All agent command files MUST use `/saleskit.*` command prefix (not `/speckit.*`)
@@ -83,7 +83,7 @@ The continuous integration system should validate that all templates are correct
 
 #### Build System
 
-- **FR-008**: System MUST provide local build script (`scripts/build-templates.sh`) that generates all 36 template variants in `dist/templates/` directory
+- **FR-008**: System MUST provide local build script (`scripts/build-templates.sh`) that generates all 34 template variants in `dist/templates/` directory
 - **FR-009**: Build script MUST copy content from `.saleskit/` source directory into `.saleskit/` structure in generated templates
 - **FR-010**: Build script MUST be idempotent and support incremental rebuilds
 - **FR-011**: Build script MUST validate template structure before creating ZIP files
@@ -129,7 +129,7 @@ The continuous integration system should validate that all templates are correct
 #### Release Automation Success
 
 - **SC-001**: Maintainer can create a new release by pushing changes to main (affecting `.saleskit/` paths), with full automation completing in under 10 minutes
-- **SC-002**: Each release generates exactly 36 template ZIP files (18 agents × 2 script types) with correct naming and structure
+- **SC-002**: Each release generates exactly 34 template ZIP files (17 agents × 2 script types) with correct naming and structure
 - **SC-003**: GitHub release page displays all templates with proper versioning, release notes, and SHA-256 checksums
 
 #### Template Quality
