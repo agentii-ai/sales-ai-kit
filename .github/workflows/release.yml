@@ -1,7 +1,15 @@
 name: Release Templates
 
 on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release tag (e.g., v0.0.94 or 0.0.94)"
+        required: true
+        type: string
   push:
+    tags:
+      - 'v*'
     branches:
       - main
     paths:
@@ -25,33 +33,54 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
 
-      - name: Get next version
-        id: get_tag
+      - name: Determine release version
+        id: version
         shell: bash
         run: |
-          chmod +x .github/workflows/scripts/get-next-version.sh
-          .github/workflows/scripts/get-next-version.sh
+          set -euo pipefail
+
+          version=""
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            version="${{ inputs.version }}"
+          elif [[ "${{ github.ref_type }}" == "tag" ]]; then
+            version="${{ github.ref_name }}"
+          else
+            chmod +x .github/workflows/scripts/get-next-version.sh
+            version="$(.github/workflows/scripts/get-next-version.sh | sed -n 's/^New version: //p')"
+          fi
+
+          version="${version#refs/tags/}"
+          if [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            version="v$version"
+          fi
+
+          if [[ ! "$version" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "ERROR: Invalid version '$version' (expected vMAJOR.MINOR.PATCH)" >&2
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
 
       - name: Check if release exists
         id: check_release
         shell: bash
         run: |
           chmod +x .github/workflows/scripts/check-release-exists.sh
-          .github/workflows/scripts/check-release-exists.sh "${{ steps.get_tag.outputs.new_version }}"
+          .github/workflows/scripts/check-release-exists.sh "${{ steps.version.outputs.version }}"
 
       - name: Build release packages
         if: steps.check_release.outputs.exists == 'false'
         shell: bash
         run: |
           chmod +x .github/workflows/scripts/create-release-packages.sh
-          GENRELEASES_DIR=.genreleases .github/workflows/scripts/create-release-packages.sh "${{ steps.get_tag.outputs.new_version }}"
+          GENRELEASES_DIR=.genreleases .github/workflows/scripts/create-release-packages.sh "${{ steps.version.outputs.version }}"
 
       - name: Generate release notes
         if: steps.check_release.outputs.exists == 'false'
         shell: bash
         run: |
           chmod +x .github/workflows/scripts/generate-release-notes.sh
-          GENRELEASES_DIR=.genreleases .github/workflows/scripts/generate-release-notes.sh "${{ steps.get_tag.outputs.new_version }}"
+          GENRELEASES_DIR=.genreleases .github/workflows/scripts/generate-release-notes.sh "${{ steps.version.outputs.version }}"
 
       - name: Create GitHub release
         if: steps.check_release.outputs.exists == 'false'
@@ -60,4 +89,4 @@ jobs:
         shell: bash
         run: |
           chmod +x .github/workflows/scripts/create-github-release.sh
-          GENRELEASES_DIR=.genreleases .github/workflows/scripts/create-github-release.sh "${{ steps.get_tag.outputs.new_version }}"
+          GENRELEASES_DIR=.genreleases .github/workflows/scripts/create-github-release.sh "${{ steps.version.outputs.version }}"
