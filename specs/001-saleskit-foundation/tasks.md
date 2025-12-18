@@ -1,7 +1,7 @@
 # Tasks: Sales-AI-Kit Foundation
 
 **Input**: Design documents from `/specs/001-saleskit-foundation/`
-**Prerequisites**: `specs/001-saleskit-foundation/plan.md` (required), `specs/001-saleskit-foundation/spec.md` (required), `.specify/memory/constitution.md` (required), `refs/4_pm_tasking_for_tasks.md` (methodology)
+**Prerequisites**: `specs/001-saleskit-foundation/plan.md` (required), `specs/001-saleskit-foundation/spec.md` (required), `.saleskit/memory/constitution.md` (required), `refs/4_pm_tasking_for_tasks.md` (methodology)
 
 **Tests**: Not requested. Validation via manual multi-kit installation testing and end-to-end workflow smoke checks.
 
@@ -34,7 +34,7 @@
 - [X] T002 Verify constraints are documented (no edits to `.windsurf/` and `.claude/`) in `specs/001-saleskit-foundation/plan.md`
 - [X] T003 [P] Verify `refs/` is a normal tracked folder (not a submodule) and record output in `specs/001-saleskit-foundation/checklists/setup.md`
 - [X] T004 [P] Verify feature docs exist and record output in `specs/001-saleskit-foundation/checklists/setup.md`
-- [X] T005 [P] Identify and remove remaining user-facing `speckit.*` references in `.specify/templates/*.md` (do not touch `.windsurf/` or `.claude/`)
+- [X] T005 [P] Identify and remove remaining user-facing `speckit.*` references in `.saleskit/**/*.md` and `specs/**/*.md` (do not touch `.windsurf/`, `.claude/`, or `.specify/`)
 
 **Checkpoint**: Preconditions verified; safe to implement without breaking agent working copies.
 
@@ -99,13 +99,13 @@
 
 ### Implementation for User Story 3
 
-- [ ] T022 [US3] Implement `sales init` command to scaffold a project with `.saleskit/` at `src/saleskit/cli.py`
-- [ ] T023 [P] [US3] Add copy logic to write the constitution into `.saleskit/memory/constitution.md` in initialized projects (source from `.specify/memory/constitution.md`) in `src/saleskit/cli.py`
-- [ ] T024 [P] [US3] Add copy logic to write Sales-AI-Kit templates into `.saleskit/templates/` in initialized projects (source from `.specify/templates/`) in `src/saleskit/cli.py`
-- [ ] T025 [US3] Add agent detection and targeting flags (e.g., `--ai claude|cursor|windsurf`) in `src/saleskit/cli.py`
-- [ ] T026 [US3] For Claude Code projects: generate agent command files under the *project’s* `.claude/commands/` (do not edit this repo’s `.claude/`) from templates in `src/saleskit/cli.py`
-- [ ] T027 [US3] For Windsurf projects: generate workflows under the *project’s* `.windsurf/workflows/` (do not edit this repo’s `.windsurf/`) from templates in `src/saleskit/cli.py`
-- [ ] T028 [US3] Create Sales-AI-Kit command/workflow templates in `.saleskit/templates/commands/` (e.g., `saleskit.specify.md`, `saleskit.plan.md`, `saleskit.tasks.md`, `saleskit.implement.md`)
+- [X] T022 [US3] Implement `sales init` command to scaffold a project with `.saleskit/` at `src/saleskit/cli.py`
+- [X] T023 [P] [US3] Copy the constitution into `.saleskit/memory/constitution.md` in initialized projects (source from this repo’s `.saleskit/memory/constitution.md`) in `src/saleskit/cli.py`
+- [X] T024 [P] [US3] Copy Sales-AI-Kit templates into `.saleskit/templates/` in initialized projects (source from this repo’s `.saleskit/templates/`) in `src/saleskit/cli.py`
+- [X] T025 [US3] Add agent targeting flag (e.g., `--ai claude|cursor|windsurf`) in `src/saleskit/cli.py`
+- [X] T026 [US3] For Claude Code projects: generate agent command files under the *project’s* `.claude/commands/` (do not edit this repo’s `.claude/`) from templates in `src/saleskit/cli.py`
+- [X] T027 [US3] For Windsurf projects: generate workflows under the *project’s* `.windsurf/workflows/` (do not edit this repo’s `.windsurf/`) from templates in `src/saleskit/cli.py`
+- [X] T028 [US3] Create Sales-AI-Kit command/workflow templates in `.saleskit/templates/commands/` (e.g., `saleskit.specify.md`, `saleskit.plan.md`, `saleskit.tasks.md`, `saleskit.implement.md`)
 
 **Checkpoint**: A new project contains `/saleskit.*` invocation assets for the chosen agent.
 
@@ -121,7 +121,7 @@
 
 - [ ] T029 [P] [US4] Update `README_spec-kit.md` fork notes (or add a Sales-AI-Kit README) to clarify naming: keep `./specify` when referring to upstream command behavior; use `.saleskit/` for kit-owned assets
 - [ ] T030 [P] [US4] Update `refs/6_windsurf_prompts.md` to remove references to missing `tasking_methodology.md` or replace with the actual path (do not add new `.windsurf/` workflows here)
-- [ ] T031 [US4] Add a “Two meanings of specify” section to `.specify/memory/constitution.md` (if not already explicit enough) without changing `.windsurf/` or `.claude/`
+- [ ] T031 [US4] Verify the “Two meanings of specify” guidance is explicit in `.saleskit/memory/constitution.md` and record any needed follow-ups in `specs/001-saleskit-foundation/validation/two-meanings-of-specify.md`
 
 **Checkpoint**: Documentation is unambiguous and supports multi-kit coexistence.
 
@@ -133,8 +133,8 @@
 
 - [ ] T032 [P] Add a multi-kit validation checklist to `specs/001-saleskit-foundation/validation/multi-kit-validation.md` (install both kits, run both CLIs, verify namespaces)
 - [ ] T033 [P] Add a weekly PDCA checklist section to `specs/001-saleskit-foundation/validation/pdca.md` (Plan/Do/Check/Act for naming collisions + template regressions)
-- [ ] T034 Run a repo-wide grep for `speckit.` and replace remaining user-facing references with `saleskit.` where appropriate in `.specify/**/*.md` (do not touch `.windsurf/` or `.claude/`)
-- [ ] T035 Ensure no kit-owned paths mention `.specify/` when describing generated projects (use `.saleskit/`) in `.specify/templates/*.md`
+- [ ] T034 Run a repo-wide grep for `speckit.` and replace remaining user-facing references with `saleskit.` where appropriate in `README_*.md`, `refs/**/*.md`, `specs/**/*.md`, and `.saleskit/**/*.md` (do not touch `.windsurf/`, `.claude/`, or `.specify/`)
+- [ ] T035 Ensure no kit-owned paths mention `.specify/` when describing generated projects (use `.saleskit/`) in `.saleskit/templates/*.md` and `.saleskit/templates/commands/*.md`
 
 **Checkpoint**: Repo is consistent, constraints are respected, and workflows are repeatable.
 
@@ -164,7 +164,7 @@ US4 (docs + compatibility)
 
 ### Parallel Opportunities
 
-- Template edits in `.specify/templates/` can be done in parallel (T016–T020)
+- Template edits in `.saleskit/templates/` can be done in parallel (T016–T020)
 - Project scaffolding work can be done in parallel with template authoring once `sales` CLI exists
 
 ---
@@ -172,10 +172,10 @@ US4 (docs + compatibility)
 ## Parallel Example: Template Alignment (US2)
 
 ```bash
-Task: "Update spec template in .specify/templates/spec-template.md"
-Task: "Update plan template in .specify/templates/plan-template.md"
-Task: "Update tasks template in .specify/templates/tasks-template.md"
-Task: "Update checklist template in .specify/templates/checklist-template.md"
+Task: "Update spec template in .saleskit/templates/spec-template.md"
+Task: "Update plan template in .saleskit/templates/plan-template.md"
+Task: "Update tasks template in .saleskit/templates/tasks-template.md"
+Task: "Update checklist template in .saleskit/templates/checklist-template.md"
 ```
 
 ---

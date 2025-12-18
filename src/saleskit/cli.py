@@ -7,6 +7,7 @@ collision-free namespace isolation.
 
 import argparse
 import sys
+import shutil
 from pathlib import Path
 
 
@@ -39,18 +40,83 @@ def cmd_namespace(args):
 
 def cmd_init(args):
     """Initialize a new Sales-AI-Kit project."""
-    target_dir = Path(args.directory or ".")
+    target_dir = Path(args.directory or ".").expanduser().resolve()
 
-    print(f"Sales-AI-Kit Project Initialization")
-    print(f"Target directory: {target_dir.absolute()}")
-    print(f"\nNote: `sales init` implementation is pending.")
-    print(f"      This will scaffold .saleskit/ with templates and constitution.")
+    print("Sales-AI-Kit Project Initialization")
+    print(f"Target directory: {target_dir}")
+
+    target_dir.mkdir(parents=True, exist_ok=True)
+
+    dest_saleskit_dir = target_dir / ".saleskit"
+    if dest_saleskit_dir.exists():
+        print(f"\nError: {dest_saleskit_dir} already exists. Refusing to overwrite.", file=sys.stderr)
+        return 1
+
+    src_saleskit_dir = _find_saleskit_template_dir()
+    if src_saleskit_dir is None:
+        print("\nError: Could not locate source .saleskit/ templates.", file=sys.stderr)
+        print("This usually means you are running from an installed wheel that did not include templates.")
+        print("Try running from a source checkout or editable install.")
+        return 1
+
+    shutil.copytree(src_saleskit_dir, dest_saleskit_dir)
+
+    print("\n✅ Created .saleskit/ (constitution + templates)")
+    print(f"  - {dest_saleskit_dir / 'memory' / 'constitution.md'}")
+    print(f"  - {dest_saleskit_dir / 'templates'}")
 
     if args.ai:
-        print(f"      Agent target: {args.ai}")
-        print(f"      Will generate /{args.ai} workflow files for selected agent.")
+        try:
+            _generate_agent_files(target_dir=target_dir, agent=args.ai)
+        except Exception as e:
+            print(f"\nError while generating agent files: {e}", file=sys.stderr)
+            return 1
+
+    print("\nNext steps:")
+    print("  - Start a feature: use your agent with /saleskit.specify")
+    print("  - Inspect templates under .saleskit/")
 
     return 0
+
+
+def _find_saleskit_template_dir() -> Path | None:
+    """Locate the repository's `.saleskit/` folder.
+
+    This is primarily intended for editable/source usage. We walk up from this file
+    until we find a sibling `.saleskit/` directory.
+    """
+    here = Path(__file__).resolve()
+    for parent in here.parents:
+        candidate = parent / ".saleskit"
+        if candidate.is_dir():
+            return candidate
+    return None
+
+
+def _generate_agent_files(target_dir: Path, agent: str) -> None:
+    commands_src_dir = target_dir / ".saleskit" / "templates" / "commands"
+    if not commands_src_dir.is_dir():
+        raise FileNotFoundError(f"Missing command templates directory: {commands_src_dir}")
+
+    if agent == "claude":
+        dest_dir = target_dir / ".claude" / "commands"
+    elif agent == "windsurf":
+        dest_dir = target_dir / ".windsurf" / "workflows"
+    elif agent == "cursor":
+        dest_dir = target_dir / ".cursor" / "commands"
+    else:
+        raise ValueError(f"Unsupported agent: {agent}")
+
+    dest_dir.mkdir(parents=True, exist_ok=True)
+
+    copied = 0
+    for template_path in sorted(commands_src_dir.glob("*.md")):
+        shutil.copy2(template_path, dest_dir / template_path.name)
+        copied += 1
+
+    print(f"\n✅ Generated {copied} agent command files")
+    print(f"  - Agent: {agent}")
+    print(f"  - Destination: {dest_dir}")
 
 
 def cmd_version(args):
