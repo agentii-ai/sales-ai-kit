@@ -26,7 +26,7 @@ Tasks are grouped by implementation phase and ordered by dependencies. Each task
 **ID**: SALESREL-001
 **Priority**: P0 (Critical Path)
 **Dependencies**: None
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Verify that all required files exist in `.saleskit/` source directory and are ready for template generation.
@@ -58,7 +58,7 @@ grep -r "speckit\." .saleskit/ && echo "ERROR: Found speckit references"
 - ✅ `.saleskit/scripts/bash/` contains required scripts
 - ✅ `.saleskit/templates/` contains spec/plan/tasks templates
 - ✅ `.saleskit/templates/commands/` contains Sales-AI-Kit command templates
-- ✅ No unintended `speckit.*` references in `.saleskit/`
+- ✅ No unintended `speckit.*` references in `.saleskit/` (note: constitution may mention other kits' namespaces as examples)
 
 ---
 
@@ -67,14 +67,14 @@ grep -r "speckit\." .saleskit/ && echo "ERROR: Found speckit references"
 **ID**: SALESREL-002
 **Priority**: P0 (Critical Path)
 **Dependencies**: SALESREL-001
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
-Confirm the canonical agent list (18) and the two script variants (sh/ps), and define their expected output directories.
+Confirm the canonical agent list (17) and the two script variants (sh/ps), and define their expected output directories.
 
 **Acceptance Criteria**:
 
-- ✅ Documented list of supported agents (same as other kits)
+- ✅ Documented list of supported agents (17 for Sales-AI-Kit release)
 - ✅ Documented mapping from agent name → expected command/workflow directory
 
 ---
@@ -86,7 +86,7 @@ Confirm the canonical agent list (18) and the two script variants (sh/ps), and d
 **ID**: SALESREL-003
 **Priority**: P0 (Critical Path)
 **Dependencies**: SALESREL-002
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Create `.github/workflows/scripts/` directory structure and placeholder scripts.
@@ -111,7 +111,7 @@ Create `.github/workflows/scripts/` directory structure and placeholder scripts.
 **ID**: SALESREL-004
 **Priority**: P0 (Critical Path)
 **Dependencies**: SALESREL-003
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Implement the core build script that generates 34 template variants from `.saleskit/` source, packaging into `.saleskit/` structure.
@@ -137,7 +137,7 @@ Implement the core build script that generates 34 template variants from `.sales
 **ID**: SALESREL-005
 **Priority**: P0 (Critical Path)
 **Dependencies**: SALESREL-004
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Implement supporting scripts used by CI.
@@ -159,7 +159,7 @@ Implement supporting scripts used by CI.
 **ID**: SALESREL-006
 **Priority**: P0 (Critical Path)
 **Dependencies**: SALESREL-004
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Create a local wrapper that outputs to `dist/templates/` and supports filtering by agent/script.
@@ -180,7 +180,7 @@ Create a local wrapper that outputs to `dist/templates/` and supports filtering 
 **ID**: SALESREL-007
 **Priority**: P0 (Critical Path)
 **Dependencies**: SALESREL-006
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Implement `scripts/validate-templates.sh` to validate either a directory of ZIPs or a single ZIP.
@@ -189,7 +189,7 @@ Implement `scripts/validate-templates.sh` to validate either a directory of ZIPs
 
 - Frontmatter namespace uses `saleskit.*`
 - Required `.saleskit/` files exist (constitution + templates + commands)
-- No unintended `speckit.*` references
+- No unintended `speckit.*` references (constitution may mention other kits' namespaces as examples)
 - Directory structure is correct for each agent
 - ZIP integrity (extractable)
 
@@ -205,7 +205,7 @@ Implement `scripts/validate-templates.sh` to validate either a directory of ZIPs
 **ID**: SALESREL-008
 **Priority**: P0 (Critical Path)
 **Dependencies**: SALESREL-007
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Update `scripts/build-templates.sh` to automatically run validation after build.
@@ -224,7 +224,7 @@ Update `scripts/build-templates.sh` to automatically run validation after build.
 **ID**: SALESREL-009
 **Priority**: P0 (Critical Path)
 **Dependencies**: SALESREL-008
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Create `.github/workflows/release.yml` that triggers on push to main (paths include `.saleskit/**`) and publishes a GitHub release.
@@ -242,7 +242,7 @@ Create `.github/workflows/release.yml` that triggers on push to main (paths incl
 **ID**: SALESREL-010
 **Priority**: P1 (High)
 **Dependencies**: SALESREL-008
-**Status**: Not Started
+**Status**: Completed
 
 **Description**:
 Create `.github/workflows/ci.yml` that runs on pull requests and executes build + validation.
@@ -250,7 +250,7 @@ Create `.github/workflows/ci.yml` that runs on pull requests and executes build 
 **Acceptance Criteria**:
 
 - ✅ CI fails on validation errors
-- ✅ CI builds all 36 variants (or a representative subset, if time-constrained)
+- ✅ CI builds a representative subset (time-constrained)
 
 ---
 
@@ -269,7 +269,7 @@ Trigger the first release and verify assets.
 **Acceptance Criteria**:
 
 - ✅ Release exists on GitHub
-- ✅ 36 assets attached
+- ✅ 34 assets attached
 - ✅ Release notes include checksums
 
 ---
@@ -301,8 +301,8 @@ Extract a couple representative templates locally and verify `.saleskit/` exists
 
 ## Completion Checklist
 
-- [ ] Local build script produces 36 ZIPs
+- [ ] Local build script produces 34 ZIPs
 - [ ] Validation script passes for all ZIPs
-- [ ] Release workflow publishes a release with 36 assets
+- [ ] Release workflow publishes a release with 34 assets
 - [ ] Release notes include checksums
 - [ ] Templates contain `.saleskit/` and correct `saleskit.*` namespace
