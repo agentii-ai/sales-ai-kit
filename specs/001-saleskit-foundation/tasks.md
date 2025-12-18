@@ -119,9 +119,9 @@
 
 ### Implementation for User Story 4
 
-- [ ] T029 [P] [US4] Update `README_spec-kit.md` fork notes (or add a Sales-AI-Kit README) to clarify naming: keep `./specify` when referring to upstream command behavior; use `.saleskit/` for kit-owned assets
-- [ ] T030 [P] [US4] Update `refs/6_windsurf_prompts.md` to remove references to missing `tasking_methodology.md` or replace with the actual path (do not add new `.windsurf/` workflows here)
-- [ ] T031 [US4] Verify the “Two meanings of specify” guidance is explicit in `.saleskit/memory/constitution.md` and record any needed follow-ups in `specs/001-saleskit-foundation/validation/two-meanings-of-specify.md`
+- [X] T029 [P] [US4] Update `README_spec-kit.md` fork notes (or add a Sales-AI-Kit README) to clarify naming: keep `./specify` when referring to upstream command behavior; use `.saleskit/` for kit-owned assets
+- [X] T030 [P] [US4] Update `refs/6_windsurf_prompts.md` to remove references to missing `tasking_methodology.md` or replace with the actual path (do not add new `.windsurf/` workflows here)
+- [X] T031 [US4] Verify the “Two meanings of specify” guidance is explicit in `.saleskit/memory/constitution.md` and record any needed follow-ups in `specs/001-saleskit-foundation/validation/two-meanings-of-specify.md`
 
 **Checkpoint**: Documentation is unambiguous and supports multi-kit coexistence.
 
@@ -131,10 +131,10 @@
 
 **Purpose**: Add validation, tighten consistency, and ensure repeatable execution (PDCA-style checkpoints per `refs/4_pm_tasking_for_tasks.md`).
 
-- [ ] T032 [P] Add a multi-kit validation checklist to `specs/001-saleskit-foundation/validation/multi-kit-validation.md` (install both kits, run both CLIs, verify namespaces)
-- [ ] T033 [P] Add a weekly PDCA checklist section to `specs/001-saleskit-foundation/validation/pdca.md` (Plan/Do/Check/Act for naming collisions + template regressions)
-- [ ] T034 Run a repo-wide grep for `speckit.` and replace remaining user-facing references with `saleskit.` where appropriate in `README_*.md`, `refs/**/*.md`, `specs/**/*.md`, and `.saleskit/**/*.md` (do not touch `.windsurf/`, `.claude/`, or `.specify/`)
-- [ ] T035 Ensure no kit-owned paths mention `.specify/` when describing generated projects (use `.saleskit/`) in `.saleskit/templates/*.md` and `.saleskit/templates/commands/*.md`
+- [X] T032 [P] Add a multi-kit validation checklist to `specs/001-saleskit-foundation/validation/multi-kit-validation.md` (install both kits, run both CLIs, verify namespaces)
+- [X] T033 [P] Add a weekly PDCA checklist section to `specs/001-saleskit-foundation/validation/pdca.md` (Plan/Do/Check/Act for naming collisions + template regressions)
+- [X] T034 Run a repo-wide grep for `speckit.` and replace remaining user-facing references with `saleskit.` where appropriate in `README_*.md`, `refs/**/*.md`, `specs/**/*.md`, and `.saleskit/**/*.md` (do not touch `.windsurf/`, `.claude/`, or `.specify/`)
+- [X] T035 Ensure no kit-owned paths mention `.specify/` when describing generated projects (use `.saleskit/`) in `.saleskit/templates/*.md` and `.saleskit/templates/commands/*.md`
 
 **Checkpoint**: Repo is consistent, constraints are respected, and workflows are repeatable.
 
