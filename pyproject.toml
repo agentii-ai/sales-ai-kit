@@ -42,6 +42,9 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["src/saleskit"]
 
+[tool.hatch.build.targets.wheel.force-include]
+".saleskit" = "saleskit/.saleskit"
+
 [tool.black]
 line-length = 100
 target-version = ['py311']

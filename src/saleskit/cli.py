@@ -8,6 +8,7 @@ collision-free namespace isolation.
 import argparse
 import shutil
 import sys
+from importlib import resources
 from pathlib import Path
 
 
@@ -85,6 +86,14 @@ def _find_saleskit_template_dir() -> Path | None:
     This is primarily intended for editable/source usage. We walk up from this file
     until we find a sibling `.saleskit/` directory.
     """
+    try:
+        candidate = resources.files("saleskit").joinpath(".saleskit")
+        with resources.as_file(candidate) as candidate_path:
+            if candidate_path.is_dir():
+                return candidate_path
+    except Exception:
+        pass
+
     here = Path(__file__).resolve()
     for parent in here.parents:
         candidate = parent / ".saleskit"
